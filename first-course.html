@@ -1,0 +1,434 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>First Course | A Dinner Party</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=Playfair+Display:wght@400;500;600&display=swap"
+          rel="stylesheet">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'DM Sans', sans-serif;
+            background-color: #F8F5EE;
+            color: #293B2F;
+            line-height: 1.6;
+        }
+
+        h1, h2, h3 {
+            font-family: 'Playfair Display', serif;
+            font-weight: 500;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        /* Navigation */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 24px 8%;
+            background-color: #F8F5EE;
+        }
+
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 25px;
+            letter-spacing: 2px;
+        }
+
+        nav {
+            display: flex;
+            gap: 30px;
+        }
+
+        nav a {
+            font-size: 14px;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: #9A7956;
+        }
+
+        /* Recipe hero */
+        .hero {
+            min-height: 440px;
+            background-color: #293B2F;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: #FFF9EE;
+            padding: 65px 20px;
+        }
+
+        .eyebrow {
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            font-size: 12px;
+            margin-bottom: 20px;
+        }
+
+        .hero h1 {
+            font-size: clamp(42px, 6vw, 72px);
+            line-height: 1.15;
+            max-width: 900px;
+            margin-bottom: 22px;
+        }
+
+        .hero .description {
+            font-size: 16px;
+            max-width: 620px;
+            margin-bottom: 28px;
+            color: #E5E4D9;
+        }
+
+        .button {
+            display: inline-block;
+            background-color: #E9DCC2;
+            color: #293B2F;
+            padding: 14px 28px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-size: 12px;
+            font-weight: 600;
+            transition: 0.3s;
+        }
+
+        .button:hover {
+            background-color: #FFFFFF;
+            transform: translateY(-2px);
+        }
+
+        /* Recipe introduction */
+        .introduction {
+            max-width: 800px;
+            margin: auto;
+            padding: 75px 25px 45px;
+            text-align: center;
+        }
+
+        .section-label {
+            color: #927A5C;
+            text-transform: uppercase;
+            font-size: 12px;
+            letter-spacing: 3px;
+            margin-bottom: 15px;
+        }
+
+        .introduction h2 {
+            font-size: clamp(32px, 4vw, 46px);
+            margin-bottom: 20px;
+        }
+
+        .introduction p {
+            color: #6D6A60;
+            font-size: 15px;
+        }
+
+        /* Recipe details */
+        .recipe-details {
+            display: grid;
+            grid-template-columns: 0.85fr 1.4fr;
+            gap: 35px;
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 25px 30px 85px;
+            align-items: start;
+        }
+
+        .ingredients,
+        .instructions {
+            background-color: #FFFFFF;
+            border: 1px solid #E5DFD2;
+            padding: 35px;
+        }
+
+        .ingredients h2,
+        .instructions h2 {
+            font-size: 30px;
+            margin-bottom: 10px;
+        }
+
+        .subheading {
+            color: #927A5C;
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 25px;
+        }
+
+        .ingredients ul {
+            list-style: none;
+        }
+
+        .ingredients li {
+            padding: 12px 0;
+            border-bottom: 1px solid #EAE5DB;
+            font-size: 14px;
+        }
+
+        .ingredients li:last-child {
+            border-bottom: none;
+        }
+
+        .instructions ol {
+            padding-left: 22px;
+        }
+
+        .instructions li {
+            padding-left: 8px;
+            margin-bottom: 23px;
+            font-size: 14px;
+            color: #6D6A60;
+        }
+
+        .instructions li::marker {
+            color: #927A5C;
+            font-weight: 600;
+        }
+
+        .instructions li strong {
+            display: block;
+            color: #293B2F;
+            font-size: 16px;
+            margin-bottom: 5px;
+        }
+
+        /* Recipe note */
+        .recipe-note {
+            background-color: #E9DCC2;
+            padding: 30px;
+            margin-top: 30px;
+        }
+
+        .recipe-note h3 {
+            font-size: 23px;
+            margin-bottom: 10px;
+        }
+
+        .recipe-note p {
+            font-size: 14px;
+            color: #56594D;
+        }
+
+        /* Return navigation */
+        .back-menu {
+            text-align: center;
+            padding: 0 20px 85px;
+        }
+
+        .back-menu p {
+            color: #6D6A60;
+            font-size: 14px;
+            margin-bottom: 20px;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #293B2F;
+            color: #F8F5EE;
+            padding: 40px 8%;
+            text-align: center;
+        }
+
+        footer h2 {
+            font-size: 25px;
+            margin-bottom: 10px;
+        }
+
+        footer p {
+            font-size: 13px;
+            color: #D5D7CD;
+            margin-bottom: 18px;
+        }
+
+        footer .copyright {
+            margin-top: 25px;
+            font-size: 11px;
+            color: #B7BDB2;
+        }
+
+        /* Mobile layout */
+        @media (max-width: 800px) {
+            .recipe-details {
+                grid-template-columns: 1fr;
+                max-width: 650px;
+            }
+        }
+
+        @media (max-width: 600px) {
+            header {
+                flex-direction: column;
+                gap: 15px;
+                padding: 20px 5%;
+            }
+
+            nav {
+                gap: 20px;
+                justify-content: center;
+                flex-wrap: wrap;
+            }
+
+            .hero {
+                min-height: 400px;
+            }
+
+            .recipe-details {
+                padding: 15px 7% 60px;
+                gap: 22px;
+            }
+
+            .ingredients,
+            .instructions {
+                padding: 25px;
+            }
+
+            .introduction {
+                padding-top: 55px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Navigation -->
+    <header>
+        <a href="home.html" class="logo">A DINNER PARTY</a>
+
+        <nav aria-label="Main navigation">
+            <a href="home.html">Home</a>
+            <a href="home.html#menu">The Menu</a>
+        </nav>
+    </header>
+
+    <main>
+
+        <!-- Hero section -->
+        <section class="hero" id="home">
+            <p class="eyebrow">01 — The First Course</p>
+
+            <h1>Arroz con Gandules</h1>
+
+            <a href="#recipe" class="button">Explore the Recipe</a>
+        </section>
+
+        <!-- Introduction -->
+        <section class="introduction">
+            <p class="section-label">A Taste of Home</p>
+
+            <h2>Dahlia's Arroz con Gandules</h2>
+
+            <p>
+                My grandma made arroz con gandules all the time when I was growing up, and the smell of sofrito hitting a hot pan still means home to me. Now that I’m at school, this is the dish I make when I miss her kitchen. • Makes 6 servings
+            </p>
+        </section>
+
+        <!-- Recipe -->
+        <section class="recipe-details" id="recipe">
+
+            <!-- Ingredients -->
+            <article class="ingredients">
+                <p class="subheading">What You'll Need</p>
+
+                <h2>Ingredients</h2>
+
+                <ul>
+                    <li>2 tablespoons olive oil</li>
+                    <li>4 ounces smoked ham, diced</li>
+                    <li>0.5 cups sofrito</li>
+                    <li>1 tablespoons sazón seasoning</li>
+                    <li>2 tablespoons tomato sauce</li>
+                    <li>20.3 cups pimento-stuffed olives, sliced</li>
+                    <li>15 ounces pigeon peas, canned, drained</li>
+                    <li>2 cups medium-grain white rice</li>
+                    <li>2.5 cups chicken broth or water</li>
+                    <li>1 teaspoons salt</li>
+                    <li>1 teaspoons dried oregano</li>
+                    <li>1 bay leaf</li>
+                </ul>
+
+            </article>
+
+            <!-- Instructions -->
+            <article class="instructions">
+                <p class="subheading">Time to Cook</p>
+
+                <h2>Instructions</h2>
+
+                <ol>
+                    <li>
+                        <strong>Build the Base</strong>
+                        Heat 2 tablespoons of olive oil in a heavy pot (caldero or Dutch oven) over medium heat. Add 4 ounces smoked ham, diced and cook until lightly browned.
+                    </li>
+
+                    <li>
+                        <strong>Cook the Sofrito</strong>
+                        Stir in 0.5 cups sofrito, 1 tablespoon sazón seasoning, 1 teaspoon dried oregano, and 2 tablespoons tomato sauce. Cook until fragrant and slightly darkened.
+                    </li>
+
+                    <li>
+                        <strong>Toast the Rice</strong>
+                        Add 2 cups medium-grain white rice, 15 ounces pigeon peas, canned, drained, and 0.3 cups pimento-stuffed olives, sliced. Stir for a couple of minutes so the rice is coated in the sofrito mixture.
+                    </li>
+
+                    <li>
+                        <strong>Add Liquid and Boil</strong>
+                        Pour in 2.5 cups chicken broth or water and add 1 teaspoon salt. Stir once, then let it boil uncovered until the liquid drops level with the rice.
+                    </li>
+
+                    <li>
+                        <strong>Steam <Cc:noie></Cc:noie>overed</strong>
+                        Stir once from the bottom, drop in 1 bay leaf, cover tightly, and reduce heat to low. Do not lift the lid.
+                    </li>
+
+                    <li>
+                        <strong>Rest and Serve</strong>
+                        Turn off the heat and rest, covered. Remove the bay leaf, fluff, and scoop up the crispy bottom layer (pegao) to serve on top.
+                    </li>
+
+                </ol>
+            </article>
+
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <h2>A DINNER PARTY</h2>
+
+        <p>Thoughtful recipes for memorable evenings.</p>
+
+        <p>
+            <a href="home.html">Home</a> &nbsp; | &nbsp;
+            <a href="home.html#menu">The Menu</a>
+        </p>
+
+        <p class="copyright">
+            © 2026 A Dinner Party. Made for gathering.
+        </p>
+    </footer>
+
+</body>
+</html>

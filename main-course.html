@@ -1,0 +1,560 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Main Course | A Dinner Party</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=Playfair+Display:wght@400;500;600&display=swap"
+          rel="stylesheet">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'DM Sans', sans-serif;
+            background-color: #F8F5EE;
+            color: #293B2F;
+            line-height: 1.6;
+        }
+
+        h1, h2, h3 {
+            font-family: 'Playfair Display', serif;
+            font-weight: 500;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        /* Navigation */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 24px 8%;
+            background-color: #F8F5EE;
+        }
+
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 25px;
+            letter-spacing: 2px;
+        }
+
+        nav {
+            display: flex;
+            gap: 30px;
+        }
+
+        nav a {
+            font-size: 14px;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: #9A7956;
+        }
+
+        /* Hero section */
+        .hero {
+            min-height: 430px;
+            background-color: #293B2F;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: #FFF9EE;
+            padding: 60px 20px;
+        }
+
+        .hero .eyebrow {
+            color: #E9DCC2;
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            font-size: 12px;
+            margin-bottom: 22px;
+        }
+
+        .hero h1 {
+            font-size: clamp(42px, 6vw, 76px);
+            line-height: 1.15;
+            max-width: 850px;
+            margin-bottom: 22px;
+        }
+
+        .hero p {
+            font-size: 17px;
+            max-width: 600px;
+            margin-bottom: 30px;
+        }
+
+        .button {
+            display: inline-block;
+            background-color: #E9DCC2;
+            color: #293B2F;
+            padding: 14px 28px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-size: 12px;
+            font-weight: 600;
+            transition: 0.3s;
+        }
+
+        .button:hover {
+            background-color: #FFFFFF;
+            transform: translateY(-2px);
+        }
+
+        /* Recipe introduction */
+        .recipe-intro {
+            text-align: center;
+            padding: 75px 20px 40px;
+            max-width: 750px;
+            margin: auto;
+        }
+
+        .eyebrow {
+            color: #927A5C;
+            text-transform: uppercase;
+            font-size: 12px;
+            letter-spacing: 3px;
+            margin-bottom: 15px;
+        }
+
+        .recipe-intro h2 {
+            font-size: clamp(34px, 4vw, 48px);
+            margin-bottom: 18px;
+        }
+
+        .recipe-intro p {
+            color: #6D6A60;
+            font-size: 15px;
+        }
+
+        /* Recipe information */
+        .recipe-details {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 20px;
+            padding: 20px 8% 45px;
+        }
+
+        .detail-card {
+            background-color: #FFFFFF;
+            border: 1px solid #E5DFD2;
+            text-align: center;
+            padding: 24px 15px;
+        }
+
+        .detail-card h3 {
+            color: #927A5C;
+            font-size: 13px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 8px;
+        }
+
+        .detail-card p {
+            font-size: 15px;
+        }
+
+        /* Ingredients and instructions */
+        .recipe-layout {
+            display: grid;
+            grid-template-columns: 0.9fr 1.5fr;
+            gap: 35px;
+            padding: 20px 8% 90px;
+            align-items: start;
+        }
+
+        .recipe-panel {
+            background-color: #FFFFFF;
+            border: 1px solid #E5DFD2;
+            padding: 35px;
+        }
+
+        .recipe-panel h2 {
+            font-size: 30px;
+            margin-bottom: 22px;
+        }
+
+        .recipe-panel .eyebrow {
+            margin-bottom: 10px;
+        }
+
+        .ingredients-list {
+            list-style: none;
+        }
+
+        .ingredients-list li {
+            padding: 12px 0;
+            border-bottom: 1px solid #E5DFD2;
+            color: #6D6A60;
+            font-size: 14px;
+        }
+
+        .ingredients-list li:last-child {
+            border-bottom: none;
+        }
+
+        .ingredients-list li::before {
+            content: "✓";
+            color: #74836A;
+            font-weight: 600;
+            margin-right: 12px;
+        }
+
+        .instructions {
+            list-style: none;
+            counter-reset: steps;
+        }
+
+        .instructions li {
+            counter-increment: steps;
+            position: relative;
+            padding: 0 0 25px 48px;
+            margin-bottom: 22px;
+            border-bottom: 1px solid #E5DFD2;
+        }
+
+        .instructions li:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+
+        .instructions li::before {
+            content: counter(steps, decimal-leading-zero);
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 32px;
+            height: 32px;
+            background-color: #74836A;
+            color: #FFFFFF;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+        }
+
+        .instructions h3 {
+            font-size: 20px;
+            margin-bottom: 7px;
+        }
+
+        .instructions p {
+            color: #6D6A60;
+            font-size: 14px;
+        }
+
+        /* Serving note */
+        .serving-note {
+            background-color: #E9DCC2;
+            text-align: center;
+            padding: 45px 20px;
+        }
+
+        .serving-note h2 {
+            font-size: 30px;
+            margin-bottom: 12px;
+        }
+
+        .serving-note p {
+            max-width: 600px;
+            margin: auto;
+            color: #55584B;
+            font-size: 14px;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #293B2F;
+            color: #F8F5EE;
+            padding: 40px 8%;
+            text-align: center;
+        }
+
+        footer h2 {
+            font-size: 25px;
+            margin-bottom: 10px;
+        }
+
+        footer p {
+            font-size: 13px;
+            color: #D5D7CD;
+            margin-bottom: 18px;
+        }
+
+        footer .copyright {
+            margin-top: 25px;
+            font-size: 11px;
+            color: #B7BDB2;
+        }
+
+        /* Tablet layout */
+        @media (max-width: 850px) {
+            header {
+                padding: 20px 5%;
+            }
+
+            nav {
+                gap: 15px;
+            }
+
+            .recipe-layout {
+                grid-template-columns: 1fr 1.3fr;
+                padding-left: 5%;
+                padding-right: 5%;
+                gap: 20px;
+            }
+
+            .recipe-panel {
+                padding: 25px;
+            }
+        }
+
+        /* Mobile layout */
+        @media (max-width: 600px) {
+            header {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            nav {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .hero {
+                min-height: 400px;
+            }
+
+            .recipe-intro {
+                padding-top: 55px;
+            }
+
+            .recipe-details {
+                grid-template-columns: 1fr;
+                padding: 15px 7% 30px;
+                gap: 12px;
+            }
+
+            .recipe-layout {
+                grid-template-columns: 1fr;
+                padding: 15px 7% 60px;
+                gap: 20px;
+            }
+
+            .recipe-panel {
+                padding: 25px;
+            }
+        }
+
+        /* Recipe Video */
+        .recipe-video {
+            text-align: center;
+            padding: 60px 8% 80px;
+            background-color: #F8F5EE;
+        }
+
+        .recipe-video h2 {
+            font-size: clamp(30px, 4vw, 42px);
+            margin-bottom: 15px;
+        }
+
+        .video-description {
+            color: #6D6A60;
+            font-size: 15px;
+            max-width: 600px;
+            margin: 0 auto 30px;
+        }
+
+        .video-container {
+            max-width: 850px;
+            margin: 0 auto;
+            border: 1px solid #E5DFD2;
+            background-color: #293B2F;
+        }
+
+        .video-container video {
+            display: block;
+            width: 100%;
+            height: auto;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Navigation -->
+    <header>
+        <a href="home.html" class="logo">A DINNER PARTY</a>
+
+        <nav aria-label="Main navigation">
+            <a href="home.html">Home</a>
+            <a href="home.html#menu">The Recipe</a>
+        </nav>
+    </header>
+
+    <main>
+
+        <!-- Hero section -->
+        <section class="hero" id="home">
+            <p class="eyebrow">02 - The Main Event</p>
+
+            <h1>Chicken Quesadillas</h1>
+
+            <a href="#recipe" class="button">Discover the Recipe</a>
+        </section>
+
+        <!-- Recipe introduction -->
+        <section class="recipe-intro" id="recipe">
+            <p class="eyebrow">Simple ingredients, wonderful company</p>
+
+            <h2>Bridget's Comforting Classic</h2>
+
+            <p>
+                Quesadillas are an easy dinner-party choice.
+                They're warm, cheesy, customizable, and simple
+                to prepare.
+            </p>
+        </section>
+       
+        </section>
+
+        <!-- Ingredients and cooking instructions -->
+        <section class="recipe-layout"
+                 aria-label="Quesadilla recipe">
+
+            <!-- Ingredients -->
+            <article class="recipe-panel">
+                <p class="eyebrow">What you'll need</p>
+
+                <h2>Ingredients</h2>
+
+                <ul class="ingredients-list">
+                    <li>10 inch tortillas</li>
+                    <li>2 cups shredded cheddar cheese</li>
+                    <li>Rotisserie chicken, shredded</li>
+                    <li>1 bell pepper</li>
+                    <li>1 cup black beans (optional)</li>
+                    <li>Salt and pepper, to taste</li>
+                    <li>Salsa, sour cream, or guacamole for serving</li>
+                </ul>
+            </article>
+
+            <!-- Instructions -->
+            <article class="recipe-panel">
+                <p class="eyebrow">Let's get cooking</p>
+
+                <h2>Instructions</h2>
+
+                <ol class="instructions">
+                    <li>
+                        <h3>Preparation</h3>
+
+                        <p>
+                            Gather all ingredients and cooking utensils, including a nonstick frying pan, spatula, and plate.
+                        </p>
+                    </li>
+
+                    <li>
+                        <h3>Prep the Pan</h3>
+
+                        <p>
+                            Lightly coat the frying pan with cooking spray to prevent the tortilla from sticking. Place the pan on the stove over medium heat.
+                        </p>
+                    </li>
+
+                    <li>
+                        <h3>Assemble the Quesadillas</h3>
+
+                        <p>
+                            Place a tortilla in a clean skillet.
+                            Sprinkle cheese over one half, then add
+                            the vegetables and chicken and optional
+                            black beans. Fold the tortilla in half.
+                        </p>
+                    </li>
+
+                    <li>
+                        <h3>Cook Until Golden</h3>
+
+                        <p>
+                            Allow the folded tortilla to cook for approximately 2–3 minutes, or until the bottom becomes golden brown and the cheese begins to melt.
+                        </p>
+                    </li>
+
+                    <li>
+                        <h3>Flip and Finish Cooking</h3>
+
+                        <p>
+                            Using a spatula, carefully flip the quesadilla. Cook the opposite side for another 2–3 minutes, until golden brown and the cheese is fully melted.
+
+                        </p>
+                    </li>
+
+                    <li>
+                        <h3>Plate and Enjoy!</h3>
+
+                        <p>
+                            Remove the quesadilla from the pan and place it on a plate. Allow it to cool briefly before cutting it into triangles. Serve with salsa or sour cream, and enjoy your quick, budget-friendly meal!
+                        </p>
+                    </li>
+                </ol>
+            </article>
+
+        </section>
+
+         <section class="recipe-video" aria-labelledby="video-title">
+        <p class="eyebrow">Watch and learn</p>
+
+        <h2 id="video-title">See How It's Made</h2>
+
+        <p class="video-description">
+            Follow along and learn how to make the perfect
+            golden, cheesy chicken quesadilla.
+        </p>
+
+        <div class="video-container">
+            <video controls>
+                <source src="quesadilla-video.mp4" type="video/mp4">
+                Your browser does not support the video element.
+            </video>
+        </div>
+    </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <h2>A DINNER PARTY</h2>
+
+        <p>Thoughtful recipes for memorable evenings.</p>
+
+        <p>
+            <a href="home.html">Home</a> &nbsp; | &nbsp;
+            <a href="home.html#menu">The Menu</a>
+        </p>
+
+        <p class="copyright">
+            © 2026 A Dinner Party. Made for gathering.
+        </p>
+    </footer>
+
+</body>
+</html>
