@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Meet the Contributors | A Dinner Party</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=Playfair+Display:wght@400;500;600&display=swap"
+          rel="stylesheet">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'DM Sans', sans-serif;
+            background-color: #F8F5EE;
+            color: #293B2F;
+            line-height: 1.6;
+        }
+
+        h1, h2, h3 {
+            font-family: 'Playfair Display', serif;
+            font-weight: 500;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        /* Navigation */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 24px 8%;
+            background-color: #F8F5EE;
+        }
+
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 25px;
+            letter-spacing: 2px;
+        }
+
+        nav {
+            display: flex;
+            gap: 30px;
+        }
+
+        nav a {
+            font-size: 14px;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: #9A7956;
+        }
+
+        /* Hero section */
+        .hero {
+            min-height: 380px;
+            background-color: #293B2F;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: #FFF9EE;
+            padding: 60px 20px;
+        }
+
+        .hero .eyebrow {
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            font-size: 12px;
+            margin-bottom: 22px;
+            color: #E9DCC2;
+        }
+
+        .hero h1 {
+            font-size: clamp(42px, 6vw, 72px);
+            line-height: 1.15;
+            max-width: 850px;
+            margin-bottom: 22px;
+        }
+
+        .hero p {
+            font-size: 16px;
+            max-width: 600px;
+        }
+
+        /* Introduction */
+        .intro {
+            text-align: center;
+            padding: 80px 20px 45px;
+            max-width: 750px;
+            margin: auto;
+        }
+
+        .eyebrow {
+            color: #927A5C;
+            text-transform: uppercase;
+            font-size: 12px;
+            letter-spacing: 3px;
+            margin-bottom: 15px;
+        }
+
+        .intro h2 {
+            font-size: clamp(34px, 4vw, 48px);
+            margin-bottom: 18px;
+        }
+
+        .intro p:not(.eyebrow) {
+            color: #6D6A60;
+            font-size: 15px;
+        }
+
+        /* Contributor cards */
+        .contributors {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 28px;
+            padding: 20px 8% 90px;
+        }
+
+        .contributor-card {
+            background-color: #FFFFFF;
+            overflow: hidden;
+            border: 1px solid #E5DFD2;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .contributor-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 12px 30px rgba(41, 59, 47, 0.10);
+        }
+
+        /* Contributor pictures */
+        .contributor-image {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+            display: block;
+            background-color: #D8C5A5;
+        }
+
+        .contributor-content {
+            padding: 26px 24px 30px;
+        }
+
+        .role {
+            color: #927A5C;
+            font-size: 11px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 10px;
+        }
+
+        .contributor-content h2 {
+            font-size: 29px;
+            margin-bottom: 14px;
+        }
+
+        .bio {
+            color: #6D6A60;
+            font-size: 14px;
+            margin-bottom: 22px;
+        }
+
+        .recipe {
+            border-top: 1px solid #E5DFD2;
+            padding-top: 16px;
+            font-size: 13px;
+        }
+
+        .recipe span {
+            display: block;
+            color: #927A5C;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-size: 10px;
+            margin-bottom: 5px;
+        }
+
+        .recipe a {
+            border-bottom: 1px solid #927A5C;
+            padding-bottom: 3px;
+        }
+
+        .recipe a:hover {
+            color: #927A5C;
+        }
+
+        /* Back to menu section */
+        .menu-link {
+            text-align: center;
+            padding: 0 20px 90px;
+        }
+
+        .button {
+            display: inline-block;
+            background-color: #293B2F;
+            color: #FFF9EE;
+            padding: 14px 28px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-size: 12px;
+            font-weight: 600;
+            transition: 0.3s;
+        }
+
+        .button:hover {
+            background-color: #74836A;
+            transform: translateY(-2px);
+        }
+
+        /* Footer */
+        footer {
+            background-color: #293B2F;
+            color: #F8F5EE;
+            padding: 40px 8%;
+            text-align: center;
+        }
+
+        footer h2 {
+            font-size: 25px;
+            margin-bottom: 10px;
+        }
+
+        footer p {
+            font-size: 13px;
+            color: #D5D7CD;
+            margin-bottom: 18px;
+        }
+
+        footer a:hover {
+            color: #E9DCC2;
+        }
+
+        footer .copyright {
+            margin-top: 25px;
+            font-size: 11px;
+            color: #B7BDB2;
+        }
+
+        /* Tablet layout */
+        @media (max-width: 850px) {
+            .contributors {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+                padding-left: 5%;
+                padding-right: 5%;
+            }
+
+            header {
+                padding: 20px 5%;
+            }
+
+            nav {
+                gap: 15px;
+            }
+        }
+
+        /* Mobile layout */
+        @media (max-width: 600px) {
+            header {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            nav {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .hero {
+                min-height: 340px;
+            }
+
+            .contributors {
+                grid-template-columns: 1fr;
+                padding: 15px 7% 60px;
+            }
+
+            .contributor-image {
+                height: 320px;
+            }
+
+            .intro {
+                padding-top: 60px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Navigation -->
+    <header>
+        <a href="home.html" class="logo">A DINNER PARTY</a>
+
+        <nav aria-label="Main navigation">
+            <a href="home.html">Home</a>
+            <a href="home.html#menu">The Menu</a>
+            <a href="contributors.html">Meet the Team</a>
+        </nav>
+    </header>
+
+    <main>
+
+        <!-- Hero section -->
+        <section class="hero" id="home">
+            <p class="eyebrow">The people behind the table</p>
+
+            <h1>Meet the Contributors</h1>
+
+        </section>
+
+        <!-- Introduction -->
+        <section class="intro" id="team">
+            <p class="eyebrow">A little about us</p>
+
+            <h2>Our Team</h2>
+
+        </section>
+
+        <!-- Contributor profiles -->
+        <section class="contributors" aria-label="Recipe contributors">
+
+            <!-- Dahlia -->
+            <article class="contributor-card">
+
+                <img
+                    src="dahlia.jpg"
+                    alt="Portrait of Dahlia"
+                    class="contributor-image"
+                    loading="lazy"
+                >
+
+                <div class="contributor-content">
+                    
+                    <h2>Dahlia Gehlaut</h2>
+
+                    <p class="bio">
+                        My name is Dahlia Gehlaut. I am a junior at Syracuse University pursuing a B.S. in International Relations, with concentrations in International Security and Diplomacy and International Law and Organizations, plus a minor in AI Policy. I gained research experience as a summer intern with Mezala Consulting and deepened my foreign policy background through a summer program at the London School of Economics. On campus, I'm an active member of Delta Delta Delta, contributing to philanthropy, recruitment, and leadership initiatives. Outside of academics, I'm an avid reader, enjoy long walks, and love traveling the world in search of new foods to try.
+                    </p>
+
+                </div>
+
+            </article>
+
+            <!-- Bridget -->
+            <article class="contributor-card">
+
+                <img
+                    src="bridget.jpg"
+                    alt="Portrait of Bridget"
+                    class="contributor-image"
+                    loading="lazy"
+                >
+
+                <div class="contributor-content">
+                    
+                    <h2>Bridget Craig</h2>
+
+                    <p class="bio">
+                        My name is Bridget, and I am a senior at Syracuse University pursuing a double major in Marketing and Management. I have gained marketing experience through an internship with Jersey Shore Marketing & Insights, where I worked on researching database software, maintaining client databases, and helping with event related tasks. I am especially interested in creative marketing, branding, and sports marketing. On campus, I am a member of Alpha Gamma Delta, where I enjoy being involved in chapter activities and building connections with others. Outside of academics, I love basketball, listening to music, spending time with friends, and baking. I hope to build a career that allows me to combine my creativity, interest in marketing, and passion for connecting with people.
+                    </p>
+
+                </div>
+
+            </article>
+
+            <!-- Nadia -->
+            <article class="contributor-card">
+
+                <img
+                    src="nadia.jpg"
+                    alt="Portrait of Nadia"
+                    class="contributor-image"
+                    loading="lazy"
+                >
+
+                <div class="contributor-content">
+                    
+                    <h2>Nadia Kurian</h2>
+
+                    <p class="bio">
+                        My name is Nadia Kurian, and I am a senior pursuing an Applied Data Analytics major at the School of Information Studies at Syracuse University. I have gained experience with creating visualizations and performing analytics through personal projects and my internship with Starbeam. I have also mentored and taught elementary and middle school students in mathematics and science courses. I am interested in pursuing more research about sustainability and how we can use data science to create solutions rather than contribute to the problem. Outside of academics, I am interested in reading, solving puzzles, and performing music. 
+                    </p>
+
+                </div>
+
+            </article>
+
+        </section>
+
+        <!-- Return to menu -->
+        <section class="menu-link">
+            <a href="home.html#menu" class="button">
+                Explore the Menu
+            </a>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <h2>A DINNER PARTY</h2>
+
+        <p>Thoughtful recipes for memorable evenings.</p>
+
+        <p>
+            <a href="home.html">Home</a>
+            &nbsp; | &nbsp;
+            <a href="home.html#menu">The Menu</a>
+            &nbsp; | &nbsp;
+            <a href="contributors.html">Meet the Team</a>
+        </p>
+
+        <p class="copyright">
+            © 2026 A Dinner Party. Made for gathering.
+        </p>
+    </footer>
+
+</body>
+</html>
